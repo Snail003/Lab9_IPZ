@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Little Lemon</title>
+    <link th:href="@{bootstrap/bootstrap.min.css}" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="text-center">
+                <img th:src="@{img/logo.png}" class="img-fluid">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="text-center">
+                <h1>Our Orders</h1>
+            </div>
+        </div>
+    </div>
+    <div class="col-12">
+        <table class="table">
+            <tr>
+                <td>Status</td>
+                <td>Dishes</td>
+                <td>Order Time</td>
+            </tr>
+            <tr th:each="order : ${orders}">
+                <td th:text="${order.getStatus()}"></td>
+                <td th:text="${order.getListOfDishes()}"></td>
+                <td th:text="${order.getTime()}"></td>
+                <td>
+                    <form th:action="@{/update-status}" method="post">
+                        <input type="hidden" name="id" th:value="${order.getId()}"/>
+                        <button type="submit" class="btn btn-primary">Change Status</button>
+                    </form>
+                </td>
+                <td>
+                    <form th:action="@{/delete-order}" method="post">
+                        <input type="hidden" name="id" th:value="${order.getId()}"/>
+                        <button type="submit" class="btn btn-primary">Delete Order</button>
+                    </form>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<script th:src="@{bootstrap/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"Restaurant"},{"l":"Restaurant.Controller"},{"l":"Restaurant.Model"},{"l":"Restaurant.Repository"},{"l":"Restaurant.Service"}];updateSearchResults();
